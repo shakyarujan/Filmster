@@ -1,0 +1,20 @@
+default: &default
+      adapter: postgresql
+      encoding: unicode
+      pool: 5
+      username: username
+      password: password
+      host:  <%= ENV['IP'] %>
+
+development:
+  <<: *default
+  database: filmster_development
+
+test:
+  <<: *default
+  database: filmster_test
+
+production:
+  <<: *default
+  database: filmster_production
+  
