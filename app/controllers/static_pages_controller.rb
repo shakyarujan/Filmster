@@ -34,4 +34,8 @@ class StaticPagesController < ApplicationController
         flash[:success] = "The StaticPage was successfully deleted!"
         redirect_to root_path
     end
+    private
+    def staticpage_params
+        params.require(:StaticPage).permit(:username)
+    end
 end

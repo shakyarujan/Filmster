@@ -1,0 +1,23 @@
+
+.text{
+    font-family: 'Trocchi', serif;    
+}
+.film {
+    float: left;
+    padding: 13px 15px;
+    font-size: 20px;
+    height: 50px;
+    color: #ee0808;
+    letter-spacing: 5px;
+    font-family: 'Trocchi', serif;  
+}
+
+.navbar-inverse .film:hover{
+     color: #FFF;
+     text-decoration:none;
+}
+.navbar-nav{
+  font-size: 14px;
+  letter-spacing: 1px;
+  font-family: 'Raleway', sans-serif;
+}

@@ -52,5 +52,11 @@ group :production do
   gem 'pg'
 end
 
-#for bootstrap
+#gem for bootstrap
 gem 'bootstrap-sass', '~> 3.3.7'
+
+#gem for devise
+gem 'devise'
+
+#gem for carrierwave
+gem 'carrierwave'
