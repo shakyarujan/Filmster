@@ -6,7 +6,7 @@ $(function(){
     e.preventDefault();
 
     $.ajax({
-      url: 'https://www.omdbapi.com/?',
+      url: 'http://www.omdbapi.com/?',
       data: form.serialize()
     })
     .done(function(data){
