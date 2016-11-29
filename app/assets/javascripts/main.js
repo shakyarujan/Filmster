@@ -54,8 +54,9 @@ $('#movies').on('click', 'img', function(e){
 function displayMovie(data){
   let containers = $("#info")
   let htmlStringinfo = "";
-
+  
   containers.empty();
+  
   $.each(data, function(key,value){
     htmlStringinfo += `<p>${data[key]}</p>`;
     });
