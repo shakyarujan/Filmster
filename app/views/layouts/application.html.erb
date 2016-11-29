@@ -10,9 +10,10 @@
 <body>
 <div id = "wrap">
     <%= render 'shared/nav' %>
+    <%= render 'shared/flash_messages' %>
     <div class = "container">
       <div class = "row">
-        <%= render 'shared/flash_messages' %>
+        
         <%= yield %>
       </div>
     </div>
