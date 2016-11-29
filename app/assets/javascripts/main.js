@@ -41,7 +41,7 @@ $('#movies').on('click', 'img', function(e){
   e.preventDefault();
     let id = $(e.target).data('id');
     $.ajax({
-      url: "https://www.omdbapi.com/?",
+      url: "http://www.omdbapi.com/?",
       data: {i: id}   
     })
     .done(function(data){
