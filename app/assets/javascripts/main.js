@@ -1,5 +1,5 @@
 /* global $ */
-/* global id */
+/* global movie */
 
 $(function(){
   let form = $('#movie-search');
@@ -16,13 +16,13 @@ $(function(){
   });
 
 function displayMovies(data){
-  let container = $("#movies")
+  let container = $("#movies");
   let htmlString = "";
 
   container.empty();
 
   if (data["Response"] == "False") {
-    htmlString = `<div class="alert alert-danger text-center" role="alert">${data["Error"]}</div>`
+    htmlString = `<div class="alert alert-danger text-center" role="alert">${data["Error"]}</div>`;
   } 
   else {
 
@@ -30,7 +30,17 @@ function displayMovies(data){
       htmlString += `<img src=${movie["Poster"] == "N/A" ? "/images/your_default_image.png" : movie["Poster"]} 
       data-id="${movie['imdbID']}" />
                      <p>${movie["Title"]}</p>
-                     <p>${movie["Year"]}</p>`;
+                     <p>${movie["Year"]}</p>
+    <form id="rating-form" action="/reviews" method="POST">
+      <input type="hidden" name="authenticity_token" value=${window._token} />
+      <input type="hidden" name="imdbid" value=${movie['imdbID']} />
+      <textarea name= "review[comment]" class="form-control" placeholder="Your review in 140 characters"/>
+      <br />
+      <input type="submit" class="btn btn-success pull-right" />
+    </form>
+                     
+                     
+                     `;
     });
   }
 
@@ -47,21 +57,20 @@ $('#movies').on('click', 'img', function(e){
     .done(function(data){
       console.log(data);
       displayMovie(data);
-      
     });
 });
 
 function displayMovie(data){
-  let containers = $("#info")
+  let containers = $("#info");
   let htmlStringinfo = "";
   
   containers.empty();
   
   $.each(data, function(key,value){
     htmlStringinfo += `<p>${data[key]}</p>`;
-    });
+  });
   containers.append(htmlStringinfo);
 }
-
 });
+  
 
