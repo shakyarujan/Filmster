@@ -4,6 +4,7 @@
   <title>Filmster | Movie Reviewing Portal</title>
   <link href="https://fonts.googleapis.com/css?family=Trocchi" rel="stylesheet">
   <%= stylesheet_link_tag    'application', media: 'all'  %>
+  <%= javascript_tag "window._token = '#{form_authenticity_token}'" %>
   <%= javascript_include_tag 'application', media: 'all' %>
   <%= csrf_meta_tags %>
 </head>
@@ -15,6 +16,7 @@
       <div class = "row">
         
         <%= yield %>
+        
       </div>
     </div>
 </div>
