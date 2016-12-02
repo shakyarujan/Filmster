@@ -1,3 +1,3 @@
 class StaticPage < ActiveRecord::Base
-     validates :user, :movie, :comment
+     validates :user, :movie, :comment, presence: true
 end
