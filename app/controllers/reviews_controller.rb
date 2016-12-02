@@ -3,7 +3,7 @@ class ReviewsController < ApplicationController
 
   def create
     @movie = MovieBuilder.new(imdbid: params[:imdbid]).build!
-
+    
     # create a new review and connect it to the current_user and the movie
     @review = current_user.reviews.new(review_params.merge(movie: @movie))
 
