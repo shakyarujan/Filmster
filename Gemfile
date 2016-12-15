@@ -61,4 +61,5 @@ gem 'devise'
 #gem for carrierwave
 gem 'carrierwave'
 
+#gen for omdb api
 gem 'omdb-api'

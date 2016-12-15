@@ -26,3 +26,17 @@
     height: 130px;
     width: 40%;
 }
+
+.grid{
+}
+
+.grid-item { 
+    width: 200px; 
+}
+
+.grid-item--width2 { 
+    width: 220px;
+    display:inline-block;
+    vertical-align:top;
+    margin-top:20px;
+}

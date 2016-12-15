@@ -1,0 +1,63 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-md-6">
+      <div class="layout-border">
+        <div class="text-center">
+          
+          
+          <%= image_tag @movie.poster == "N/A" ? "/assets/not-found.png" : @movie.poster, class: "movie-poster" %>
+        </div>
+
+        <div class="about-movie">
+          <p><%= truncate(@movie.plot, length: 100) %> </p>                         
+          <p><strong>Year:</strong>  <%= @movie.year %> </p>
+          <p><strong>Director:</strong> <%= @movie.director %></p>
+          <p><strong>Writter:</strong> <%= @movie.writer %></p>
+          <p><strong>Actors: </strong><%= @movie.actors %></p>
+          <p><strong>Awards:</strong> <%= @movie.awards %> </p>
+          <p><strong>Language:</strong> <%= @movie.language %></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xs-12 col-md-6">
+      <div class="layout-border">
+        <h2> Reviews </h2>
+
+        <% if @movie.reviews.size > 0 %>
+
+        <% @movie.reviews.each do |review| %>
+        <hr>
+          <div id="review-comment">
+            <blockquote>
+              <p> <%= review.comment %> </p>
+              <small>  
+              <%= link_to review.user_username.capitalize, review.user, class: "uname" %> 
+              </small>
+            </blockquote>
+          </div>
+          <% if current_user == review.user %>
+            <%= link_to "Delete", review , method: :delete, class: "btn btn-sm btn-danger" %>
+          <% end %>
+        <% end %>
+
+        <% else %>
+          <h3><p> There are no reviews yet </p></h3>
+        <% end %>
+
+        <% if user_signed_in? && unless current_user.reviewed?(@movie) %>
+        <hr>
+        <h4>Create your review!</h4>
+        <form id="rating-form" action="/reviews" method="POST">
+          <input type="hidden" name="authenticity_token" value=${window._token} />
+          <input type="hidden" name="imdbid" value=<%= @movie.imdbid %> />
+          <textarea name= "review[comment]" class="form-control" placeholder="Your movie review"></textarea>
+          <br>
+          <input type="submit" class="btn btn-success" />
+        </form>
+        <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

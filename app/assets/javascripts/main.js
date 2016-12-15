@@ -17,10 +17,12 @@ $(function(){
 
 function displayMovies(data){
   let container = $("#movies");
+  let rvMoviestoHide = $("#movies-default");
   let htmlString = "";
 
   container.empty();
-
+  rvMoviestoHide.remove();
+  
   if (data["Response"] == "False") {
     htmlString = `<div class="alert alert-danger text-center" role="alert">${data["Error"]}</div>`;
   } 
@@ -30,17 +32,7 @@ function displayMovies(data){
       htmlString += `<img src=${movie["Poster"] == "N/A" ? "/images/your_default_image.png" : movie["Poster"]} 
       data-id="${movie['imdbID']}" />
                      <p>${movie["Title"]}</p>
-                     <p>${movie["Year"]}</p>
-    <form id="rating-form" action="/reviews" method="POST">
-      <input type="hidden" name="authenticity_token" value=${window._token} />
-      <input type="hidden" name="imdbid" value=${movie['imdbID']} />
-      <textarea name= "review[comment]" class="form-control" placeholder="Your review in 140 characters"/>
-      <br />
-      <input type="submit" class="btn btn-success pull-right" />
-    </form>
-                     
-                     
-                     `;
+                     <p>${movie["Year"]}</p>`;
     });
   }
 
@@ -61,16 +53,34 @@ $('#movies').on('click', 'img', function(e){
 });
 
 function displayMovie(data){
-  let containers = $("#info");
-  let htmlStringinfo = "";
-  
-  containers.empty();
-  
-  $.each(data, function(key,value){
-    htmlStringinfo += `<p>${data[key]}</p>`;
-  });
-  containers.append(htmlStringinfo);
+      let container = $("#movies");
+      let htmlString = "";
+      container.empty();
+      
+          htmlString += `<img style="width:100px" src=${data["Poster"] == "N/A" ? "http://www.reelviews.net/resources/img/default_poster.jpg" : data["Poster"]}  />
+                         <p>Title :  ${data["Title"]}</p>
+                         <p>Year:  ${data["Year"]}</p>
+                         <p> ${data["Plot"]}</p>                         
+                         <p>Released : ${data["Released"]}</p>
+                         <p>Runtime : ${data["Runtime"]}</p>
+                         <p>Genre : ${data["Genre"]}</p>
+                         <p>Director : ${data["Director"]}</p>
+                         <p>Writter : ${data["Writer"]}</p>
+                         <p>Actors : ${data["Actors"]}</p>
+                         <p>Language : ${data["Language"]}</p>
+                         <p>Country : ${data["Country"]}</p>
+                         <p>Awards : ${data["Awards"]}</p>
+                         
+                         <form id="rating-form" action="/reviews" method="POST">
+                          <input type="hidden" name="authenticity_token" value=${window._token} />
+                          <input type="hidden" name="imdbid" value=${data["imdbID"]} />
+                          <textarea name= "review[comment]" class="form-control" placeholder="Your movie review"/>
+                          <br />
+                          <input type="submit" class="btn btn-success pull-right" />
+                        </form>`;
+      container.append(htmlString);
 }
+``;
 });
   
 

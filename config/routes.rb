@@ -7,6 +7,8 @@ Rails.application.routes.draw do
    root 'static_pages#index'
    
    resources :reviews
+   resources :movies, only: :show
+   resources :users, only: :show
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

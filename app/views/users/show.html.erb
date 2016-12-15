@@ -1,0 +1,15 @@
+<%= image_tag @user.photo.present? ? @user.photo : "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSknvaquxG5ns-RO-bB3e3JsloyPtEwBSKlc2dml0-l2jlk5jGi", class: "prof-pic-lg" %>
+<h1 class="text-center"><%= @user.username %></h1>
+
+<p class="text-center lead"><%= @user.introduction %></p>
+
+<ul class="user-stats">
+  <li>
+    <div class="number-label">Reviews</div>
+    <div class="number-value"><%= @user.reviews.count %></div>
+  </li> 
+</ul>
+
+<div id ="movies"></div>
+<script type="text/javascript">
+</script>

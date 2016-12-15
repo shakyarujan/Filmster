@@ -1,9 +1,9 @@
 class ReviewsController < ApplicationController
-  before_action :authenticate_user!  
-
+  before_action :authenticate_user!, only: :create  
+  
+ 
   def create
     @movie = MovieBuilder.new(imdbid: params[:imdbid]).build!
-    
     # create a new review and connect it to the current_user and the movie
     @review = current_user.reviews.new(review_params.merge(movie: @movie))
 
@@ -16,7 +16,16 @@ class ReviewsController < ApplicationController
     end
     
   end
-
+  
+  def destroy
+    @review = current_user.reviews.find(params[:id])
+    @movie = @review.movie 
+    if @review.destroy
+      flash[:danger] = "Review deleted!"
+    end
+    redirect_to :back
+  end
+  
   private
 
   def review_params
