@@ -1,0 +1,23 @@
+.movie-container {
+  width: 200px;
+   height: 300px;
+  float: left;
+  margin-bottom:20px;
+  text-align: center;
+  border: 2px solid #dcdcdc;
+}
+
+.movie-container-details {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0,0,0,0.5);
+  color: white;
+  padding: 3px;
+}
+
+.grid-item-para {
+  // width: inherit;
+  font-size: 14px;
+}

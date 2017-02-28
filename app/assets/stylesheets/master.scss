@@ -22,21 +22,64 @@
   font-family: 'Raleway', sans-serif;
 }
 
-#rating-form{
-    height: 130px;
-    width: 40%;
+
+
+#movies {
+  text-align: justify;
 }
 
-.grid{
+.movie-poster {
+  width: 150px;
+  margin: 15px auto;
+  border: 2px solid #dbdbdb;
+} 
+
+#review-comment blockquote {
+  margin-right: 100px;
 }
 
-.grid-item { 
-    width: 200px; 
+#review-comment span {
+  float: right;
 }
 
-.grid-item--width2 { 
-    width: 220px;
-    display:inline-block;
-    vertical-align:top;
-    margin-top:20px;
+.movie-rating {
+  font-size: 0.4em;
+  // color: #555;
+  .fa {
+    vertical-align: middle;
+    color: #ffd700;
+  }
+}
+
+.movie-rating-score {
+  font-size: 30px;
+}
+
+.movie-votes {
+  font-weight: 100;
+  font-size: 0.3em;
+}
+
+.movie-info {
+  display: table;
+  list-style-type: none;
+  margin: 10px auto;
+  li {
+    color: #777;
+    font-size: 11px;
+    text-align: center;
+    vertical-align: middle;
+    padding: 0 5px;
+    display: table-cell;
+    border-right: 1px solid #ddd;
+  }
+
+  li:last-child {
+    border-right: none;
+  }
+}
+
+.about-movie {
+  padding: 10px;
+  color: #666;
 }

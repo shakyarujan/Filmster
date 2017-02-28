@@ -6,10 +6,17 @@
   <%= javascript_tag "window._token = '#{form_authenticity_token}'" %>
   <%= stylesheet_link_tag 'application', media: 'all'  %>
   <%= javascript_include_tag 'application', media: 'all' %>
-  <script src="https://unpkg.com/masonry-layout@4.1/dist/masonry.pkgd.min.js"></script>
   <%= csrf_meta_tags %>
+  
+  <!-- Masonry -->
+  <script src="https://unpkg.com/masonry-layout@4.1/dist/masonry.pkgd.min.js"></script>
+
+  <!-- ImagesLoaded -->
+  <script src="https://npmcdn.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script>
+  
 </head>
 <body>
+  
 <div id = "wrap">
     <%= render 'shared/nav' %>
     <%= render 'shared/flash_messages' %>
